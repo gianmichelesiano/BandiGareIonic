@@ -1,0 +1,23 @@
+<h3>I Ristoranti</h3>
+<div *ngFor="let item of ristoranteList | async; let i = index; ">
+       <div class="mdl-card mdl-shadow--2dp demo-card-square">
+
+       <div *ngIf="loading" class="mdl-spinner mdl-js-spinner is-active"></div>  
+         <div class="mdl-card__title mdl-card--expand">
+           <img [hidden]="loading" (load)="onLoad()" [src]="item.downloadURL | async" style="max-width:250px;max-height:200px;">
+         </div>
+
+         <div class="mdl-card__supporting-text">
+           <span style="color:#009688;"> {{item.nome}} </span> - {{item.indirizzo}}
+         </div>
+
+         <div class="mdl-card__actions mdl-card--border">
+           <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="dettaglioRistorante(item.$key)">
+            Entra
+           </a>
+         </div>
+
+       </div>
+</div>
+
+

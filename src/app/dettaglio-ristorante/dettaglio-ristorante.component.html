@@ -1,0 +1,38 @@
+<div class="mdl-grid demo-content">
+
+		<div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+		
+
+			<div class="mdl-cell mdl-cell--2-col"></div>
+			<div class="mdl-cell mdl-cell--4-col">
+   <div *ngIf="loading" class="mdl-spinner mdl-js-spinner is-active"></div>     
+   <img [hidden]="loading" (load)="onLoad()" [src]="downloadURL | async" style="max-width:300px;max-height:300px;"/>
+			</div>
+			<div class="mdl-cell mdl-cell--2-col" >
+			 <p>Nome</p>
+			 <p>Tipologia:</p>
+			 <p>Indirizzo:</p>
+			 <p>Giorni apertura</p>
+			 <p>Max tempo consegna</p>
+			 <p>Costo consegna</p>
+			 <p>Ordine minimo</p>
+			</div>
+			<div class="mdl-cell mdl-cell--4-col">
+			 <p>{{ (ristorante | async)?.nome  }}</p>
+			 <p>{{ (ristorante | async)?.tipologia  }}</p>
+			 <p>{{ (ristorante | async)?.indirizzo  }}</p>
+			 <p>{{ (ristorante | async)?.giorniApertura  }}</p>
+			 <p>{{ (ristorante | async)?.maxTempoConsegna  }}</p>
+			 <p>{{ (ristorante | async)?.costoConsegna  }}</p>
+			 <p>{{ (ristorante | async)?.ordineMin  }}</p>
+			</div>
+		</div>
+
+		<div class="mdl-cell mdl-cell--4-col" >      
+<button mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple (click)="apriMenu()">Menù</button>
+
+<button mdl-button mdl-button-type="raised"   mdl-colored="primary" mdl-ripple (click)="apriRecensioni()">Recensioni</button>
+		</div>
+
+</div>
+

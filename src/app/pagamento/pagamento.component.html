@@ -1,0 +1,58 @@
+
+<h3>Pagamento</h3>
+
+<div class="sposta">
+ <font size="5" style="color:red;">Totale: {{totale | number: '.2'}} CHF</font>   
+</div>
+
+  <div class="mdl-grid demo-content">
+  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-grid">
+<div class="mdl-grid">
+
+<div class="mdl-cell mdl-cell--12-col graybox">
+
+
+<form [formGroup]="datiPersonaliForm" (ngSubmit)="paga($event)">
+
+  <p class="form-group">
+    <mdl-textfield label="Nome" type="text" formControlName="nome" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="Cognome" type="text" formControlName="cognome" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="Indirizzo di spedizione" type="text" formControlName="indirizzo" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="cap" type="text" formControlName="cap" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="Telefono" type="text" formControlName="telefono" floating-label required="true"></mdl-textfield>
+  </p>
+
+
+
+  <p>
+    Pagamento<br/>
+    <mdl-radio value="carta" formControlName="pagamento" mdl-ripple>Carta di credito</mdl-radio>
+    <mdl-radio value="contanti" formControlName="pagamento" mdl-ripple>Contanti</mdl-radio>
+  </p>
+
+
+
+
+ <p class="form-group">
+  <button type="submit" mdl-button mdl-button-type="raised" mdl-colored="accent">
+    Paga
+  </button>
+  </p>
+</form>  
+
+</div>
+</div>
+</div>
+</div>

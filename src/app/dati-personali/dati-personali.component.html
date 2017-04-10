@@ -1,0 +1,52 @@
+
+<h3>Dati Personali</h3>
+  <div class="mdl-grid demo-content">
+  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+<div class="mdl-grid">
+
+<div class="mdl-cell mdl-cell--12-col graybox">
+
+
+<form [formGroup]="datiPersonaliForm" (ngSubmit)="salvaDatiPersonali($event)">
+
+  <p class="form-group">
+    <mdl-textfield label="Nome" type="text" formControlName="nome" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="Cognome" type="text" formControlName="cognome" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="Indirizzo" type="text" formControlName="indirizzo" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p class="form-group">
+    <mdl-textfield label="cap" type="text" formControlName="cap" floating-label required="true"></mdl-textfield>
+  </p>
+
+
+  <p class="form-group">
+    <mdl-textfield label="Data di nascita" type="date" formControlName="dataNascita" floating-label required="true"></mdl-textfield>
+  </p>
+
+  <p>
+    Sesso<br/>
+    <mdl-radio value="m" formControlName="sesso" mdl-ripple>Uomo</mdl-radio>
+    <mdl-radio value="f" formControlName="sesso" mdl-ripple>Donna</mdl-radio>
+  </p>
+
+
+
+
+ <p class="form-group">
+  <button type="submit" mdl-button mdl-button-type="raised" mdl-colored="accent">
+    Salva
+  </button>
+  </p>
+</form>  
+
+</div>
+</div>
+</div>
+</div>

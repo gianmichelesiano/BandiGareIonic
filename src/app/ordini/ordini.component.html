@@ -1,0 +1,34 @@
+
+<div class="mdl-grid">
+   <!--Inizio Cella-->
+   <div class="mdl-cell mdl-cell--12-col graybox ">
+<table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Data</th>
+      <th class="mdl-data-table__cell--non-numeric">Indirizzo</th>
+      <th class="mdl-data-table__cell--non-numeric">Totale</th>
+      <th class="mdl-data-table__cell--non-numeric">Stato</th>
+      <th class="mdl-data-table__cell--non-numeric">Dettaglio ordine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of ordini | async ">
+       <td class="mdl-data-table__cell--non-numeric">{{item.data*1000 | date:'short'}}</td>
+       <td class="mdl-data-table__cell--non-numeric">{{item.indirizzoSpedizione}}</td>
+       <td class="mdl-data-table__cell--non-numeric">{{item.totale}} CHF</td>
+
+       <td *ngIf="item.stato == 0" class="mdl-data-table__cell--non-numeric">In preparazione</td>
+       <td *ngIf="item.stato == 1" class="mdl-data-table__cell--non-numeric">In consegna</td>
+       <td *ngIf="item.stato == 2" class="mdl-data-table__cell--non-numeric">In viaggio</td>
+       <td *ngIf="item.stato == 3" class="mdl-data-table__cell--non-numeric">Consegnato</td>
+
+
+    <td><button mdl-button mdl-button-type="mini-fab" mdl-colored="primary" (click)="dettaglioOrdine(item.$key)"><mdl-icon>play_arrow</mdl-icon></button></td>
+
+
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

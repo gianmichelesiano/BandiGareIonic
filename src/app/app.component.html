@@ -1,77 +1,58 @@
-<mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed>
-  <mdl-layout-header>
-    <mdl-layout-header-row>
-      <mdl-layout-title>{{title}}</mdl-layout-title>
-      <mdl-layout-spacer></mdl-layout-spacer>
-      <!-- Navigation. We hide it in small screens. -->
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link">Link</a>
-      </nav>
-    </mdl-layout-header-row>
-  </mdl-layout-header>
-  <mdl-layout-drawer>
-    <mdl-layout-title>Title</mdl-layout-title>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link">Link</a>
-    </nav>
-  </mdl-layout-drawer>
-  <mdl-layout-content class="demo-content">
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+      <header class="demo-header mdl-layout__header mdl-color--teal-color-text--grey-600">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">{{title}}</span>
+          <div class="mdl-layout-spacer"></div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search">
+              <label class="mdl-textfield__label" for="search">Enter your query...</label>
+            </div>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+            <li routerLink="/login" class="mdl-menu__item">Login</li>
+            <li routerLink="/dati-personali" class="mdl-menu__item">Dati personali</li>
+            <li routerLink="/impostazioni" class="mdl-menu__item">Impostazioni</li>
+            <li routerLink="/logout" class="mdl-menu__item">Logout</li>
+          </ul>
+        </div>
+      </header>
+      <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img [src]="avatar" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>{{nome}}</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+
+            </button>
+
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+            <a class="mdl-navigation__link" routerLink="/"><i class="mdl-color-text--white material-icons" role="presentation">home</i>Home</a>
+
+            <a class="mdl-navigation__link" routerLink="/ristoranti"><i class="mdl-color-text--white material-icons" role="presentation">restaurant</i>Ristoranti</a>
+
+            <a class="mdl-navigation__link" routerLink="/offerte"><i class="mdl-color-text--white material-icons" role="presentation">local_activity</i>Offerte</a>
 
 
-    <p>
-      <button mdl-button  mdl-button-type="fab" mdl-colored="primary" mdl-ripple (click)="dialog.show()">
-        <mdl-icon>edit</mdl-icon>
-      </button>
-    </p>
+            <a class="mdl-navigation__link" routerLink="/ordini"><i class="mdl-color-text--white material-icons" role="presentation">notifications_active</i>Ordini</a>
 
-    <mdl-dialog #dialog>
-      <h3 class="mdl-dialog__title">Edit User</h3>
-      <div class="mdl-dialog__content">
-        <mdl-textfield type="text" label="Username" [(ngModel)]="editedUsername" floating-label autofocus></mdl-textfield>
+            <a class="mdl-navigation__link" routerLink="/carrello"><i class="mdl-color-text--white material-icons" role="presentation">local_grocery_store</i>Carrello</a>
+
+        </nav>
       </div>
-      <div class="mdl-dialog__actions">
-        <button mdl-button (click)="dialog.close()" mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Save</button>
-        <button mdl-button (click)="dialog.close()" mdl-button-type="raised" mdl-ripple>Cancel</button>
-      </div>
-    </mdl-dialog>
+      <main class="mdl-layout__content mdl-color--grey-100">
+               <div class="router-outlet">
+                  <router-outlet></router-outlet>
+               </div>
+      </main>
+    </div>
+  
 
-    <p>
-      <button mdl-button mdl-button-type="raised" mdl-colored="accent" mdl-ripple (click)="test()">
-        Alert
-      </button>
-    </p>
-
-    <p>
-      <mdl-icon mdl-badge="1" mdl-badge-overlap>account_box</mdl-icon>
-    </p>
-
-    <p>
-      <mdl-spinner single-color active></mdl-spinner>
-    </p>
-
-    <p>
-      <mdl-textfield type="text" label="Text..." [(ngModel)]="text3" floating-label></mdl-textfield>
-    </p>
-
-    <p>
-      <mdl-checkbox [mdl-ripple]="true" [(ngModel)]="checkbox1"> Checkbox </mdl-checkbox>
-    </p>
-
-    <p>
-      <mdl-radio name="group1" value="1" [(ngModel)]="radioOption" mdl-ripple>Value 1</mdl-radio>
-      <mdl-radio name="group1" value="2" [(ngModel)]="radioOption" mdl-ripple>Value 2</mdl-radio>
-    </p>
-
-    <p>
-      <mdl-switch [(ngModel)]="checkbox1" mdl-ripple>Option 1</mdl-switch>
-    </p>
-
-    <p>
-      <mdl-select floating-label [(ngModel)]="otherCountryCode" label="Country">
-        <mdl-option *ngFor="let c of countries" [value]="c.code">{{c.name}}</mdl-option>
-      </mdl-select>
-    </p>
-
-
-  </mdl-layout-content>
-</mdl-layout>
+    

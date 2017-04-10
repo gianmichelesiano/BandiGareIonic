@@ -1,0 +1,38 @@
+   <div class="sposta">
+   <button mdl-button mdl-button-type="raised" mdl-colored="accent" (click)="tornaOrdini()">Torna alla lista ordini</button>
+   </div>
+
+
+<div class="mdl-grid">
+   <!--Inizio Cella-->
+   <div class="mdl-cell mdl-cell--12-col graybox ">
+<table class="mdl-data-table mdl-js-data-table  mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Ristorante</th>
+      <th class="mdl-data-table__cell--non-numeric">Piatto</th>
+      <th class="mdl-data-table__cell--non-numeric">Quantità</th>
+      <th class="mdl-data-table__cell--non-numeric">Pronto</th>
+      <th class="mdl-data-table__cell--non-numeric">Ritirato</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaOrdineObservable | async ">
+       <td class="mdl-data-table__cell--non-numeric">{{ (item.ristoranteName | async)?.nome }}</td>
+       <td class="mdl-data-table__cell--non-numeric">{{item.nomePiatto}}</td>
+       <td class="mdl-data-table__cell--non-numeric">{{item.quantity}}</td>
+
+<td *ngIf="!item.pronto"><mdl-icon>clear</mdl-icon></td>
+<td *ngIf="item.pronto"><mdl-icon>done</mdl-icon></td>
+
+<td *ngIf="!item.ritirato"><mdl-icon>clear</mdl-icon></td>
+<td *ngIf="item.ritirato"><mdl-icon>done</mdl-icon></td>
+
+
+
+
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

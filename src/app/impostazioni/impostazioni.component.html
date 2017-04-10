@@ -1,0 +1,36 @@
+
+<h3>Impostazioni</h3>
+  <div class="mdl-grid demo-content">
+  <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+<div class="mdl-grid">
+
+<div class="mdl-cell mdl-cell--12-col graybox">
+
+
+<form [formGroup]="impostazioniForm" (ngSubmit)="salvaInformazioni($event)">
+
+  <p>
+    <mdl-select   formControlName="lingua" >
+      <mdl-option [value]><em>-- Seleziona --</em></mdl-option>
+      <mdl-option *ngFor="let c of lingue" [value]="c.code">{{c.name}}</mdl-option>
+    </mdl-select>
+  </p>
+
+  <p>
+    <mdl-select   formControlName="moneta" >
+      <mdl-option [value]><em>-- Seleziona --</em></mdl-option>
+      <mdl-option *ngFor="let c of monete" [value]="c.code">{{c.name}}</mdl-option>
+    </mdl-select>
+  </p>
+
+ <p class="form-group">
+  <button type="submit" mdl-button mdl-button-type="raised" mdl-colored="accent">
+    Salva
+  </button>
+  </p>
+</form>  
+
+</div>
+</div>
+</div>
+</div>

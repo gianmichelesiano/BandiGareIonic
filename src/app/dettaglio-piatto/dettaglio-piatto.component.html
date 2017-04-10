@@ -1,0 +1,47 @@
+       <div class="mdl-card mdl-shadow--2dp demo-card-square">
+
+         <div *ngIf="loading" class="mdl-spinner mdl-js-spinner is-active"></div>  
+         <div class="mdl-card__title mdl-card--expand">
+<img [hidden]="loading" (load)="onLoad()" [src]="downloadURL | async" style="max-width:300px;max-height:300px;"/>
+         </div>
+
+         <div  class="mdl-card__supporting-text">
+           <h3  style="color:#009688;"> {{ (piatto | async)?.nomePiatto  }} </h3> 
+           <p> {{ (piatto | async)?.ricetta  }} </p>
+          <p *ngIf="(piatto | async)?.inOfferta" >Offerta termina il:  {{ (piatto | async)?.dataScadenza | date  }} </p>
+
+          <p *ngIf="!(piatto | async)?.inOfferta" >Prezzo:  {{ (piatto | async)?.prezzo | number : '1.2-2'}} CHF</p>
+
+          <del style="color:red;" *ngIf="(piatto | async)?.inOfferta" >Prezzo:  {{ (piatto | async)?.prezzo | number : '1.2-2'}} CHF</del>
+
+          <p *ngIf="(piatto | async)?.inOfferta" >Prezzo offerta:  {{ (piatto | async)?.prezzoOfferta | number : '1.2-2'}} CHF</p>
+
+          </div>
+
+
+<div class="mdl-card__actions mdl-card--border" align="center" >
+  <button mdl-button mdl-button-type="mini-fab" mdl-colored="primary" (click)="remove()">
+    <mdl-icon>remove</mdl-icon>
+  </button>
+{{quantity}}
+    <button mdl-button mdl-button-type="mini-fab" mdl-colored="accent" (click)="add()">
+    <mdl-icon>add</mdl-icon>
+  </button>
+</div>
+
+<div *ngIf="!(piatto | async)?.inOfferta" class="mdl-card__actions mdl-card--border" >
+  <span style="color:#009688;" >Costo totale: {{quantity*(piatto | async)?.prezzo | number : '1.2-2'}} CHF</span>  
+</div>
+
+<div *ngIf="(piatto | async)?.inOfferta" class="mdl-card__actions mdl-card--border" >
+  <span style="color:#009688;" >Costo totale: {{quantity*(piatto | async)?.prezzoOfferta | number : '1.2-2'}} CHF</span>  
+</div>
+
+<div class="mdl-card__actions mdl-card--border" align="center" >
+
+  <button mdl-button mdl-button-type="raised" mdl-colored="accent" (click)="aggiungiAlCarrello(quantity)">
+    Aggiungi al carrello
+  </button>
+</div>
+
+</div>
